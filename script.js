@@ -11,6 +11,8 @@ const input_day = document.querySelector('#day');
 const error_day = document.querySelector('.error-day');
 const error_month = document.querySelector('.error-month');
 const error_year = document.querySelector('.error-year');
+
+submit_btn.addEventListener("click", calculatedate)
 input_day.addEventListener("input", (e) => {
     if (+input_day > 31) {
         error_day.textContent = "must be a valid date";
@@ -72,3 +74,22 @@ input_year.addEventListener("input", (e) => {
         error_year.textContent = "";
     }
 });
+
+function calculatedate() {
+    if (isvalid) {
+        let birthday = `${ input_month.value }/${input_day.value}/${ input_year.value }`;
+        console.log(birthday)
+        let birthdayobj = new Date(birthday);
+        let ageDiffmill = Date.now() - birthdayobj;
+        let ageDate = new Date(ageDiffmill);
+        let ageYears = ageDate.getUTCFullYear() - 1979;
+        let ageMonth = ageDate.getUTCMonth();
+        let ageDay = ageDate.getUTCDay() - 1;
+        output_day.textContent = ageDay;
+        output_month.textContent = ageMonth;
+        output_year.textContent = ageYears;
+    } else {
+        alert("error")
+    }
+
+}
