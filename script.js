@@ -7,7 +7,7 @@ let isvalid = false;
 const input_year = document.querySelector('#year');
 const input_month = document.querySelector('#month');
 const input_day = document.querySelector('#day');
-//const submit_btn = document.querySelector('.output-day');
+
 const error_day = document.querySelector('.error-day');
 const error_month = document.querySelector('.error-month');
 const error_year = document.querySelector('.error-year');
@@ -82,9 +82,9 @@ function calculatedate() {
         let birthdayobj = new Date(birthday);
         let ageDiffmill = Date.now() - birthdayobj;
         let ageDate = new Date(ageDiffmill);
-        let ageYears = ageDate.getUTCFullYear() - 1979;
+        let ageYears = ageDate.getUTCFullYear() - 1970;
         let ageMonth = ageDate.getUTCMonth();
-        let ageDay = ageDate.getUTCDay();
+        let ageDay = ageDate.getUTCDate() - 1;
         output_day.textContent = ageDay;
         output_month.textContent = ageMonth;
         output_year.textContent = ageYears;
