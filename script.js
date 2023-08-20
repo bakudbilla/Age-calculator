@@ -12,6 +12,19 @@ const error_day = document.querySelector('.error-day');
 const error_month = document.querySelector('.error-month');
 const error_year = document.querySelector('.error-year');
 
+
+function retrieveDOB() {
+    let dob = localStorage.getItem('dob');
+    if (dob) {
+        let dobArray = dob.split('/');
+        input_month.value = dobArray[0];
+        input_day.value = dobArray[1];
+        input_year.value = dobArray[2];
+    }
+}
+
+
+
 submit_btn.addEventListener("click", calculatedate)
 input_day.addEventListener("input", (e) => {
     if (+input_day > 31) {
@@ -75,6 +88,11 @@ input_year.addEventListener("input", (e) => {
     }
 });
 
+function saveDOB() {
+    let dob = `${input_month.value}/${input_day.value}/${input_year.value}`;
+    localStorage.setItem('dob', dob);
+}
+
 function calculatedate() {
     if (isvalid) {
         let birthday = `${ input_month.value }/${input_day.value}/${ input_year.value }`;
@@ -91,5 +109,8 @@ function calculatedate() {
     } else {
         alert("error")
     }
-
+    saveDOB();
 }
+window.onload = function() {
+    retrieveDOB();
+};
