@@ -84,7 +84,7 @@ function calculatedate() {
         let ageDate = new Date(ageDiffmill);
         let ageYears = ageDate.getUTCFullYear() - 1979;
         let ageMonth = ageDate.getUTCMonth();
-        let ageDay = ageDate.getUTCDay() - 1;
+        let ageDay = ageDate.getUTCDay();
         output_day.textContent = ageDay;
         output_month.textContent = ageMonth;
         output_year.textContent = ageYears;
